@@ -1,4 +1,4 @@
-package java.com.ada.learning;
+package com.ada.learning;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
