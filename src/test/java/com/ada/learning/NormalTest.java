@@ -1,5 +1,6 @@
 package com.ada.learning;
 
+import com.ada.learning.dubbo.spi.DubboSpiTest;
 import com.ada.learning.guava.CollectionsTest;
 import com.ada.learning.jvm.Loader;
 import lombok.extern.slf4j.Slf4j;
@@ -16,5 +17,10 @@ public class NormalTest {
     @Test
     public void test2(){
         Loader.test();
+    }
+
+    @Test
+    public void test3(){
+        DubboSpiTest.spi();
     }
 }
