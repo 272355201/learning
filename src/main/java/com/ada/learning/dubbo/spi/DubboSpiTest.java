@@ -4,7 +4,9 @@ import com.ada.learning.dubbo.service.Robot;
 import com.ada.learning.dubbo.service.RobotDubbo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.compiler.Compiler;
+import org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator;
 import org.apache.dubbo.common.extension.ExtensionLoader;
+import org.apache.dubbo.remoting.Transporter;
 import org.apache.dubbo.rpc.Protocol;
 
 import java.util.ServiceLoader;
@@ -34,6 +36,13 @@ public class DubboSpiTest {
         log.info("defaultExtensions-{}", dubboExtensionLoader.getDefaultExtension());
         log.info("Compiler-adapExtensions-{}", ExtensionLoader.getExtensionLoader(Compiler.class).getAdaptiveExtension());
         log.info("Protocal-adapExtensions-{}", ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension());
+
+        AdaptiveClassCodeGenerator classCodeGenerator = new AdaptiveClassCodeGenerator(Protocol.class, null);
+        String generate = classCodeGenerator.generate();
+        log.warn("generate--" + generate);
+        log.warn("defaultdubbo--" + new AdaptiveClassCodeGenerator(Protocol.class, "dubbo").generate());
+        log.warn("invodubbo--" + new AdaptiveClassCodeGenerator(RobotDubbo.class, "dubbo").generate());
+        log.warn("Transporter--" + new AdaptiveClassCodeGenerator(Transporter.class, "netty").generate());
 
 
     }
