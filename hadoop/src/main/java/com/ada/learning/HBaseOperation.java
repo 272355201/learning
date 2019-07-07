@@ -7,6 +7,10 @@ import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
+/**
+ * make sure the file(conf/hbase-env.sh) is correct exist on running host:
+ * export HBASE_CLASSPATH=/usr/local/hbase/conf
+ */
 @Slf4j
 public class HBaseOperation {
     private static Configuration configuration;
